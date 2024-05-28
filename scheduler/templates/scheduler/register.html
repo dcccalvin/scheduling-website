@@ -1,0 +1,11 @@
+{% extends "scheduler/base_generic.html" %}
+
+{% block content %}
+  <h2>Register</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ provider_form.as_p }}
+    <button type="submit">Register</button>
+  </form>
+{% endblock %}
