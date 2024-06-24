@@ -1,0 +1,16 @@
+{% extends "scheduler/base_generic.html" %}
+
+{% block content %}
+  <h2>Service Provider Profile</h2>
+  <p>Welcome, {{ user.username }}</p>
+  <a href="{% url 'add_service' %}">Add a new service</a>
+
+  <h3>Your Services</h3>
+  <ul>
+    {% for service in services %}
+      <li>{{ service.name }} - {{ service.description }}</li>
+    {% empty %}
+      <li>No services available.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

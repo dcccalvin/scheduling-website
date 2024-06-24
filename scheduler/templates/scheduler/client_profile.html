@@ -1,0 +1,34 @@
+{% extends "scheduler/base_generic.html" %}
+
+{% block content %}
+  <h2>Your Appointments</h2>
+  <ul>
+    {% for appointment in appointments %}
+      <li>
+        <strong>{{ appointment.service.name }}</strong><br>
+        Date: {{ appointment.appointment_date }}<br>
+        Service Provider: {{ appointment.service.service_provider.name }}<br>
+      </li>
+    {% empty %}
+      <li>You have no appointments.</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Available Services</h2>
+  <ul>
+    {% for service in services %}
+      <li>
+        <strong>{{ service.name }}</strong><br>
+        {{ service.description }}<br>
+        Price: {{ service.price }}<br>
+        Duration: {{ service.duration }}<br>
+        <a href="{% url 'book_appointment' service.id %}" class="btn btn-secondary">Book Appointment</a>
+      </li>
+    {% empty %}
+      <li>No services available.</li>
+    {% endfor %}
+  </ul>
+  <h2>Add service</h2>
+  <a href="{% url 'add_service' %}"><button>Add service</button></a>
+{% endblock %}
+

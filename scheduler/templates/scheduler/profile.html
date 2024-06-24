@@ -1,6 +1,18 @@
 {% extends "scheduler/base_generic.html" %}
 
 {% block content %}
-  <h2>Profile</h2>
-  <p>Welcome, {{ request.user.username }}!</p>
+<h2>Your Services</h2>
+<a href="{% url 'create_service' %}" class="btn btn-primary">Create a New Service</a>
+<ul>
+  {% for service in services %}
+    <li>
+      <strong>{{ service.name }}</strong><br>
+      {{ service.description }}<br>
+      Price: {{ service.price }}<br>
+      Duration: {{ service.duration }}<br>
+    </li>
+  {% empty %}
+    <li>You have no services listed.</li>
+  {% endfor %}
+</ul>
 {% endblock %}

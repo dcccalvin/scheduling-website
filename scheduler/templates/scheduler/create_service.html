@@ -1,0 +1,10 @@
+{% extends "scheduler/base_generic.html" %}
+
+{% block content %}
+  <h2>Create a New Service</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Create Service</button>
+  </form>
+{% endblock %}

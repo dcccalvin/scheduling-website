@@ -1,22 +1,69 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>{% block title %}My Site{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Scheduling{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    {% block extra_css %}{% endblock %}
 </head>
-<body>
-    <header>
-        <h1>My Site</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'register' %}">Register</a></li>
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'profile' %}">Profile</a></li>
-            </ul>
-        </nav>
+<body class="bg-dark text-light d-flex flex-column min-vh-100">
+    <header class="bg-secondary p-3">
+        <div class="container">
+            <h1 class="display-4 text-center">Scheduler.com</h1>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse navbar-buttons" id="navbarNav">
+                        <ul class="nav nav-tabs w-100">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'home' %}">
+                                    <button class="button">Home</button>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'register' %}">
+                                    <button class="button">Register</button>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">
+                                    <button class="button">Login</button>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'profile' %}">
+                                    <button class="button">Profile</button>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'add_service' %}">
+                                    <button class="button">+ Service</button>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
     </header>
-    <main>
+    <main class="flex-grow-1 container mt-4">
         {% block content %}{% endblock %}
     </main>
+    <footer class="bg-secondary text-light text-center py-3">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Scheduler.com</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

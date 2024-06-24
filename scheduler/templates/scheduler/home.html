@@ -1,6 +1,22 @@
 {% extends "scheduler/base_generic.html" %}
 
 {% block content %}
-    <h2>Welcome to the Scheduling App</h2>
-    <p>This is the home page.</p>
+<div class="container my-5">
+    <div class="card bg-dark text-light border-light shadow">
+        <div class="card-header bg-secondary text-center">
+            <h2>Welcome to the Home Page</h2>
+        </div>
+        <div class="card-body text-center">
+            {% if user.is_authenticated %}
+                <h5 class="card-title">Hello, {{ user.username }}!</h5>
+                <p class="card-text">We're glad to have you back. Explore your profile and more.</p>
+                <a href="{% url 'profile' %}" class="btn btn-outline-success m-2">Go to your Profile</a>
+                <a href="{% url 'logout' %}" class="btn btn-outline-danger m-2">Logout</a>
+            {% else %}
+                <h5 class="card-title">You are not logged in.</h5>
+                <p class="card-text">Please <a href="{% url 'login' %}" class="text-success">login</a> or <a href="{% url 'register' %}" class="text-primary">register</a> to enjoy full features.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
